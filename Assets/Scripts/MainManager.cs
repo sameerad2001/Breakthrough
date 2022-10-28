@@ -72,5 +72,12 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+
+        // Update high score
+        if (m_Points > DataPersistence.Instance.bestScore){
+            DataPersistence.Instance.UpdateHighScorer(m_Points);
+
+            GameObject.Find("UI Manager").GetComponent<FetchUserName>().FetchAndDisplayUserName();
+        }
     }
 }
